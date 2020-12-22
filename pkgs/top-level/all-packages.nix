@@ -25161,6 +25161,8 @@ in
 
   rofi-power-menu = callPackage ../applications/misc/rofi-power-menu { };
 
+  rofi-top = callPackage ../tools/system/rofi-top { };
+
   ympd = callPackage ../applications/audio/ympd { };
 
   # a somewhat more maintained fork of ympd

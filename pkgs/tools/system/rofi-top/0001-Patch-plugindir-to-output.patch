@@ -1,0 +1,26 @@
+From 9416addf91dd1bd25dfd5a8c5f1c7297c444408e Mon Sep 17 00:00:00 2001
+From: Dave Davenport <qball@gmpclient.org>
+Date: Mon, 16 Oct 2017 19:34:20 +0200
+Subject: [PATCH] Use target directory from pkg-config file
+
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4d2df69..3260910 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -54,7 +54,7 @@ dnl ---------------------------------------------------------------------
+ PKG_CHECK_MODULES([glib],     [glib-2.0 >= 2.40 gio-unix-2.0 gmodule-2.0 libgtop-2.0])
+ PKG_CHECK_MODULES([rofi],     [rofi])
+
+-[rofi_PLUGIN_INSTALL_DIR]="`$PKG_CONFIG --variable=pluginsdir rofi`"
++[rofi_PLUGIN_INSTALL_DIR]="`echo $out/lib/rofi`"
+ AC_SUBST([rofi_PLUGIN_INSTALL_DIR])
+
+ LT_INIT([disable-static])
+--
+2.25.1
+
+
