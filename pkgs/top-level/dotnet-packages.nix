@@ -164,6 +164,12 @@ let self = dotnetPackages // overrides; dotnetPackages = with self; {
     sha256 = "1g3j3kvg9vrapb1vjgq65nvn1vg7bzm66w7yjnaip1iww1yn1b0p";
     outputFiles = [ "lib/*" ];
   };
+  NUnit3TestAdapter = fetchNuGet {
+    baseName = "NUnit3TestAdapter";
+    version = "3.17.0";
+    sha256 = "ZlpEM9IQlqsRPmYPMN6yCbICfakSoY89y40xtMY3rE8=";
+    outputFiles = [ "*" ];
+  };
 
   NUnit350 = fetchNuGet {
     baseName = "NUnit";
@@ -207,6 +213,14 @@ let self = dotnetPackages // overrides; dotnetPackages = with self; {
     version = "0.86.0";
     sha256 = "01w2038gckfnq31pncrlgm7d0c939pwr1x4jj5450vcqpd4c41jr";
     outputFiles = [ "lib/*" ];
+  };
+
+  StyleCopAnalyzers = fetchNuGet {
+    baseName = "StyleCop.Analyzers";
+    version = "1.1.118";
+    sha256 = "CjC1f5z0sP15F6FeXqIDOtZLHqgjmQTzpsIrRkxXREI=";
+    # outputFiles = [ "tools/*" ];
+    outputFiles = [ "*" ];
   };
 
   StyleCopMSBuild = fetchNuGet {
@@ -312,6 +326,50 @@ let self = dotnetPackages // overrides; dotnetPackages = with self; {
     baseName = "System.Reflection.Metadata";
     version = "1.4.2";
     sha256 = "19fhdgd35yg52gyckhgwrphq07nv7v7r73hcg69ns94xfg1i6r7i";
+    outputFiles = [ "*" ];
+  };
+  SystemNetHttp = fetchNuGet {
+    baseName = "System.Net.Http";
+    version = "4.3.4";
+    sha256 = "FMoU0K7nlPLxoDju0NL21Wjlga9GpnAoQjsFhFYYt00=";
+    outputFiles = [ "*" ];
+  };
+  SystemRuntimeLoader= fetchNuGet {
+    baseName = "System.Runtime.Loader";
+    version = "4.3.0";
+    sha256 = "syG1GTFjYbwX146BD/L7t55j+DZqpHDc6z28kdSNzx0=";
+    outputFiles = [ "*" ];
+  };
+
+  MicrosoftDotNetPlatformAbstractions= fetchNuGet {
+    baseName = "Microsoft.DotNet.PlatformAbstractions";
+    version = "3.1.6";
+    sha256 = "RfM2qXiqdiamPkXr4IDkNc0IZSF9iTZv4uou/E7zNS0=";
+    outputFiles = [ "*" ];
+  };
+  MicrosoftExtensionsDependencyModel = fetchNuGet {
+    baseName = "Microsoft.Extensions.DependencyModel";
+    version = "5.0.0";
+    sha256 = "vUwAWMxXiMW+JOiQE5fcJycOfJJzO87ESYAsEPsPqtY=";
+    outputFiles = [ "*" ];
+  };
+
+  MicrosoftNETTestSdk = fetchNuGet {
+    baseName = "Microsoft.NET.Test.Sdk";
+    version = "16.9.1";
+    sha256 = "hefOxUAdu2CRsz+9Avq+fS9PIGxfbQdK4JDXcueuwZw=";
+    outputFiles = [ "*" ];
+  };
+  MicrosoftNETFrameworkReferenceAssemblies = fetchNuGet {
+    baseName = "Microsoft.NETFramework.ReferenceAssemblies";
+    version = "1.0.0";
+    sha256 = "6faPQ4jaFY3OGGVk3lZKW+DEZaIOBZ/wHqbiDTsRR1k=";
+    outputFiles = [ "*" ];
+  };
+  MicrosoftWin32Registry = fetchNuGet {
+    baseName = "Microsoft.Win32.Registry";
+    version = "5.0.0";
+    sha256 = "9kylPGfKZc58yFqNKa77stomcoNnMeERXozWJzDcUIA=";
     outputFiles = [ "*" ];
   };
 
@@ -969,5 +1027,53 @@ let self = dotnetPackages // overrides; dotnetPackages = with self; {
       platforms = with lib.platforms; linux;
     };
   };
-
+  rix0rrr-BeaconLib = fetchNuGet {
+    baseName = "rix0rrr.BeaconLib";
+    version = "1.0.2";
+    sha256 = "pJx8BQ9KTR8coXSubUvotmMM0YaczLMh3NJsdOGJHjg=";
+    outputFiles = [ "*" ];
+  };
+  DiscordRichPresence = fetchNuGet {
+    baseName = "DiscordRichPresence";
+    version = "1.0.175";
+    sha256 = "bScgeCaNozcZTMQCxNcXfLxi3AHbxoXBaUcMc1JXGqA=";
+    outputFiles = [ "*" ];
+  };
+  Pfim = fetchNuGet {
+    baseName = "Pfim";
+    version = "0.10.0";
+    sha256 = "kF+rD9VwEd1bNzh9jzI9Mlg4V+pCDW9Z4r7gAwlGrnc=";
+    outputFiles = [ "*" ];
+  };
+  # TODO move these out into pkgs/games/openra/dotnet-packages.nix
+  OpenRA-Freetype6 = fetchNuGet {
+    baseName = "OpenRA-Freetype6";
+    version = "1.0.4";
+    sha256 = "oYxaJZxiFIdW0sByJZAE7GSLVOsRE54VjNNn4BvZES0=";
+    outputFiles = [ "*" ];
+  };
+  OpenRA-Eluant = fetchNuGet {
+    baseName = "OpenRA-Eluant";
+    version = "1.0.18";
+    sha256 = "fLJkk4VCkY1HdotBHXeV4gB2aboSLdHJhP0ISkFoteg=";
+    outputFiles = [ "*" ];
+  };
+  OpenRA-FuzzyLogicLibrary = fetchNuGet {
+    baseName = "OpenRA-FuzzyLogicLibrary";
+    version = "1.0.1";
+    sha256 = "NW5e5ywU8XUtVezB4lHQPc4mAK1zb3wnpSvrkAhawE4=";
+    outputFiles = [ "*" ];
+  };
+  OpenRA-SDL2-CS = fetchNuGet {
+    baseName = "OpenRA-SDL2-CS";
+    version = "1.0.28";
+    sha256 = "N7gY3hj/akslkbc8NtLPPioBQTnRzomHlbLg2jD0Nwg=";
+    outputFiles = [ "*" ];
+  };
+  OpenRA-OpenAL-CS = fetchNuGet {
+    baseName = "OpenRA-OpenAL-CS";
+    version = "1.0.16";
+    sha256 = "6i66rpk2/sujjLOWFL18aA+Hhi9Sf+DQrBXPw1l989o=";
+    outputFiles = [ "*" ];
+  };
 }; in self

@@ -34,8 +34,8 @@ in {
   } name);
 
   bleed = buildUpstreamOpenRAEngine {
-    version = "8ee1102";
-    rev = "8ee11028d72cde7556b31d45f556b40be65b4b70";
-    sha256 = "0f1fpf37ms8d7fhlh3rjzsxsk9w23iyi3phs2i7g561292d5rk3l";
+    version = "20210321";
+    rev = "b8e64df4b158b079462192485c213648bf1b2758";
+    sha256 = "tPsayjk0xbXbV/zHu01JHSQiFgGK3kUEwKBNFdzF1no=";
   };
 }

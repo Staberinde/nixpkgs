@@ -2,7 +2,7 @@
     and out-of-tree mod packages (mod.nix).
 */
 { lib, makeSetupHook, curl, unzip, dos2unix, pkg-config, makeWrapper
-, lua, mono, dotnetPackages, python
+, lua, mono6, dotnet-sdk, dotnetPackages, python
 , libGL, freetype, openal, SDL2
 , zenity
 }:
@@ -10,7 +10,7 @@
 with lib;
 
 let
-  path = makeBinPath ([ mono python ] ++ optional (zenity != null) zenity);
+  path = makeBinPath ([ mono6 python ] ++ optional (zenity != null) zenity);
   rpath = makeLibraryPath [ lua freetype openal SDL2 ];
   mkdirp = makeSetupHook { } ./mkdirp.sh;
 
@@ -22,7 +22,6 @@ in {
       -e '/GeoLite2-Country.mmdb.gz/d' \
       ${dir}/Makefile
 
-    sed -i 's|locations=.*|locations=${lua}/lib|' ${dir}/thirdparty/configure-native-deps.sh
   '';
 
   wrapLaunchGame = openraSuffix: ''
@@ -38,6 +37,7 @@ in {
   '';
 
   packageAttrs = {
+    # TODO nuget is trying to getch packages so I think that this list is incomplete
     buildInputs = with dotnetPackages; [
       FuzzyLogicLibrary
       MaxMindDb
@@ -46,14 +46,32 @@ in {
       NewtonsoftJson
       NUnit3
       NUnitConsole
+      NUnit3TestAdapter
       OpenNAT
       RestSharp
       SharpFont
       SharpZipLib
       SmartIrc4net
+      StyleCopAnalyzers
       StyleCopMSBuild
       StyleCopPlusMSBuild
+      rix0rrr-BeaconLib
+      DiscordRichPresence
+      Pfim
+      OpenRA-Freetype6
+      OpenRA-Eluant
+      OpenRA-FuzzyLogicLibrary
+      OpenRA-SDL2-CS
+      OpenRA-OpenAL-CS
+      MicrosoftDotNetPlatformAbstractions
+      MicrosoftExtensionsDependencyModel
+      MicrosoftNETTestSdk
+      MicrosoftNETFrameworkReferenceAssemblies
+      MicrosoftWin32Registry
+      SystemNetHttp
+      SystemRuntimeLoader
     ] ++ [
+      dotnet-sdk
       libGL
     ];
 
@@ -65,7 +83,7 @@ in {
       pkg-config
       makeWrapper
       mkdirp
-      mono
+      mono6
       python
     ];
 
