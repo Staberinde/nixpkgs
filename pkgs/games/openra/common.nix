@@ -4,7 +4,7 @@
 { lib, makeSetupHook, curl, unzip, dos2unix, pkg-config, makeWrapper
 , lua, mono6, dotnet-sdk, dotnetPackages, python
 , libGL, freetype, openal, SDL2
-, zenity
+, zenity, dotnetbuildhelpers
 }:
 
 with lib;
@@ -73,6 +73,7 @@ in {
     ] ++ [
       dotnet-sdk
       libGL
+      dotnetbuildhelpers
     ];
 
     # TODO: Test if this is correct.
@@ -85,6 +86,7 @@ in {
       mkdirp
       mono6
       python
+      dotnetbuildhelpers
     ];
 
     makeFlags = [ "prefix=$(out)" ];
