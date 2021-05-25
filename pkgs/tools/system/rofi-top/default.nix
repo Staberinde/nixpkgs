@@ -23,15 +23,21 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [
     autoreconfHook
-    pkgconfig
+    cairo
     gobject-introspection
+    pkgconfig
     wrapGAppsHook
+    rofi-unwrapped
   ];
 
   buildInputs = [
-    rofi-unwrapped
+    cairo
     glib
     libgtop
+    rofi-unwrapped
+  ];
+
+  propagatedBuildInputs = [
     cairo
   ];
 
