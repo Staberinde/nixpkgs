@@ -44,6 +44,9 @@ let
   buildOpenRASet = f: args: pkgs.recurseIntoAttrs (mapAttrs callWithName (f ({
     inherit (pkgs) fetchFromGitHub;
     extraPostFetch = "";
+    #   sed -i 's/curl/curl --insecure/g' $out/thirdparty/{fetch-thirdparty-deps,noget}.sh
+    #   $out/thirdparty/fetch-thirdparty-deps.sh
+    # '';
   } // args)));
 
 in pkgs.recurseIntoAttrs rec {

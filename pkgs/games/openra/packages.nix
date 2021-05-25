@@ -33,6 +33,10 @@ let
   buildOpenRASet = f: args: builtins.mapAttrs (name: value: if builtins.isFunction value then value name else value) (f ({
     inherit (pkgs) fetchFromGitHub;
     extraPostFetch = "";
+    # extraPostFetch = ''
+    #   sed -i 's/curl/curl --insecure/g' $out/thirdparty/{fetch-thirdparty-deps,noget}.sh
+    #   $out/thirdparty/fetch-thirdparty-deps.sh
+    # '';
   } // args));
 
 in rec {

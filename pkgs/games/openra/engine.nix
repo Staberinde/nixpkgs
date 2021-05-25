@@ -12,6 +12,7 @@
 , patchEngine
 , wrapLaunchGame
 , engine
+# , dotnetbuildhelpers
 }:
 
 with lib;
@@ -19,7 +20,11 @@ with lib;
 stdenv.mkDerivation (recursiveUpdate packageAttrs rec {
   name = "${pname}-${version}";
   pname = "openra";
-  version = "${engine.name}-${engine.version}";
+  # version = "${engine.name}-${engine.version}";
+  # derivation version doesn't match dotnet-sdk version format constraints, so use the engine version
+  # TODO fix this
+  version = engine.version;
+  engine_version = engine.version;
 
   src = engine.src;
 
@@ -28,7 +33,7 @@ stdenv.mkDerivation (recursiveUpdate packageAttrs rec {
   configurePhase = ''
     runHook preConfigure
 
-    make version VERSION=${escapeShellArg version}
+    make version VERSION=${escapeShellArg engine.version}
 
     runHook postConfigure
   '';
@@ -45,6 +50,10 @@ stdenv.mkDerivation (recursiveUpdate packageAttrs rec {
     "install-linux-mime"
     "install-man-page"
   ];
+
+  # preConfigure = ''
+  #   [ -z "''${dontPlacateNuget-}" ] && pkgs/build-support/dotnetbuildhelpers/placate-nuget.sh
+  # '';
 
   postInstall = ''
     ${wrapLaunchGame ""}

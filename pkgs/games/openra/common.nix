@@ -15,13 +15,15 @@ let
   mkdirp = makeSetupHook { } ./mkdirp.sh;
 
 in {
-  patchEngine = dir: version: ''
+  # derivation version doesn't match dotnet-sdk version format constraints, so use the engine version
+  patchEngine = dir: engine_version: ''
     sed -i \
-      -e 's/^VERSION.*/VERSION = ${version}/g' \
+      -e 's/^VERSION.*/VERSION = ${engine_version}/g' \
       -e '/fetch-geoip-db/d' \
       -e '/GeoLite2-Country.mmdb.gz/d' \
       ${dir}/Makefile
 
+    # sed -i 's|locations=.*|locations=${lua}/lib|' ${dir}/thirdparty/configure-native-deps.sh
   '';
 
   wrapLaunchGame = openraSuffix: ''
@@ -73,6 +75,7 @@ in {
     ] ++ [
       dotnet-sdk
       libGL
+      Nuget
       dotnetbuildhelpers
     ];
 
